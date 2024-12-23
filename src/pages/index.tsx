@@ -114,7 +114,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="w-full space-y-12">
+        <div className="w-full pl-40 space-y-12">
           <div className="text-[#043D58] text-center">
             <div className="relative w-max mx-auto">
               <h1 className="text-[64px] leading-none font-medium">Brands</h1>
@@ -173,7 +173,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col items-center justify-center space-y-4">
+        <div className="w-full flex flex-col items-center pl-40 space-y-4">
           <div className="w-96">
             <p>Name</p>
             <Input placeholder="Value" />
