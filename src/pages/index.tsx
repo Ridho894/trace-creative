@@ -1,114 +1,198 @@
 import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import { MdPhoneInTalk } from "react-icons/md";
+import { CiInstagram } from "react-icons/ci";
+import { TfiEmail } from "react-icons/tfi";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import Button from "@/components/core/Button";
+import Input from "@/components/core/Input";
+import Textarea from "@/components/core/Textarea";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const brands = [
+  "/brands/mitshubishi-motors.png",
+  "/brands/itsec.png",
+  "/brands/bi.png",
+  "/brands/kospin.png",
+  "/brands/bri.png",
+  "/brands/dsf.png",
+  "/brands/pesantren.png",
+  "/brands/flsmidth.png",
+];
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="pb-10">
+      <div className="relative w-screen h-screen overflow-hidden">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src="/background_top.png"
+          alt="Background Image"
+          fill
+          className="object-cover"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      </div>
+      <div className="relative w-full mb-40">
+        <div className="bg-[url('/curve.png')] h-screen w-screen bg-cover bg-no-repeat">
+          <h2 className="text-h2 text-white text-center pt-24">
+            a merchandising company dedicated to turning <br />
+            <span className="underline">your ideas into reality</span>
+          </h2>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <section className="w-full absolute right-0 -bottom-24">
+          <div className="flex justify-between max-w-7xl mx-auto">
+            <div className="space-y-4">
+              <div className="leading-tight">
+                <h1 className="text-h1 text-[#043D58]">
+                  Why <span className="font-bold">Trace?</span>
+                </h1>
+                <h5>
+                  Because We Always{" "}
+                  <span className="text-h5 font-bold">C.A.R.E</span>
+                </h5>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-8 font-bold">
+                  <h1 className="text-h1 text-[#FFDA00] [text-shadow:_0_6px_0_rgb(0_0_0_/_20%)] w-10 leading-none drop-shadow-xl">
+                    C
+                  </h1>
+                  <h5 className="text-h5 text-[#043D58] font-medium">
+                    Customer-Centric
+                  </h5>
+                </div>
+                <div className="flex items-center space-x-8 font-bold">
+                  <h1 className="text-h1 text-[#FFDA00] [text-shadow:_0_6px_0_rgb(0_0_0_/_20%)] w-10 leading-none drop-shadow-xl">
+                    A
+                  </h1>
+                  <h5 className="text-h5 text-[#043D58] font-medium">
+                    Affordable Quality
+                  </h5>
+                </div>
+                <div className="flex items-center space-x-8 font-bold">
+                  <h1 className="text-h1 text-[#FFDA00] [text-shadow:_0_6px_0_rgb(0_0_0_/_20%)] w-10 leading-none drop-shadow-xl">
+                    R
+                  </h1>
+                  <h5 className="text-h5 text-[#043D58] font-medium">
+                    Responsible & Eco-Friendly
+                  </h5>
+                </div>
+                <div className="flex items-center space-x-8 font-bold">
+                  <h1 className="text-h1 text-[#FFDA00] [text-shadow:_0_6px_0_rgb(0_0_0_/_20%)] w-10 leading-none drop-shadow-xl">
+                    E
+                  </h1>
+                  <h5 className="text-h5 text-[#043D58] font-medium">
+                    Expertise & Excellence
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div
+              style={{
+                borderRadius: "100% 100% 25% 100%",
+              }}
+              className="bg-[#043D58] text-white p-4 h-96 w-96 flex items-end justify-end text-right pb-20 px-12"
+            >
+              <h6 className="text-h6">
+                Trace focuses on <br />
+                <span className="underline text-[#FFDA00]">
+                  customer relationships delivering affordable
+                </span>{" "}
+                high-quality products through{" "}
+                <span className="underline text-[#FFDA00]">
+                  eco-friendly practices.
+                </span>{" "}
+                we bring fresh ideas to life, creating impactful, sustainable
+                merchandise for your brand.
+              </h6>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div className="flex items-center justify-between max-w-[1440px] mx-auto">
+        <div className="p-4 w-full">
+          <img
+            src={"/brands/items/combined.JPG"}
+            className="-z-10 relative"
+            alt=""
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+
+        <div className="w-full space-y-12">
+          <div className="text-[#043D58] text-center">
+            <div className="relative w-max mx-auto">
+              <h1 className="text-[64px] leading-none font-medium">Brands</h1>
+              <div
+                style={{
+                  borderRadius: "100% 100% 25% 100%",
+                }}
+                className="bg-[#FFDA00] h-6 w-6 top-10 -left-2 -z-10 absolute"
+              />
+            </div>
+            <p>We're Proud to Collaborating With</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            {brands.map((brand, i) => (
+              <div
+                key={i}
+                className="flex justify-center items-center w-[calc(25%-0.5rem)]"
+              >
+                <img
+                  src={brand}
+                  alt=""
+                  className="object-contain aspect-square h-20"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="flex pt-32 justify-between max-w-[1440px] mx-auto">
+        <div className="w-full space-y-10">
+          <div className="relative">
+            <div className="bg-[#0F6284] h-[500px] w-[500px] -top-52 -left-80 -z-10 rounded-full absolute" />
+            <img src="/phone.png" className="h-72 -ml-4" alt="" />
+          </div>
+          <div className="w-full flex items-end space-x-12">
+            <div className="space-y-2 text-[#043D58] font-medium">
+              <div className="flex items-center space-x-6">
+                <MdPhoneInTalk className="w-4 h-4" />
+                <p>+62 81297358236</p>
+              </div>
+              <div className="flex items-center space-x-6">
+                <CiInstagram className="w-4 h-4" />
+                <p>@tracecreative</p>
+              </div>
+              <div className="flex items-center space-x-6">
+                <TfiEmail className="w-4 h-4" />
+                <p>info@tracecreative.co.id</p>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-h3 font-medium text-black">Office</h3>
+              <p className="text-[#043D58]">
+                Jl. Raya Pekayan kav. 8 Jaka Setia, Kota Bekasi, Jawa Barat
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full flex flex-col items-center justify-center space-y-4">
+          <div className="w-96">
+            <p>Name</p>
+            <Input placeholder="Value" />
+          </div>
+          <div className="w-96">
+            <p>Surname</p>
+            <Input placeholder="Value" />
+          </div>
+          <div className="w-96">
+            <p>Email</p>
+            <Input placeholder="Value" />
+          </div>
+          <div className="w-96">
+            <p>Message</p>
+            <Textarea placeholder="Value" />
+          </div>
+          <Button className="w-96">Confirm</Button>
+        </div>
+      </div>
     </div>
   );
 }
