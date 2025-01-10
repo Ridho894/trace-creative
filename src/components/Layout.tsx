@@ -53,7 +53,11 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex items-center space-x-8">
             {menus.map((menu, i) => (
               <div key={i}>
-                <Link href={"#"} passHref className="text-sub2 cursor-pointer">
+                <Link
+                  href={menu.path}
+                  passHref
+                  className="text-sub2 cursor-pointer"
+                >
                   {menu.name}
                 </Link>
               </div>
