@@ -2,35 +2,35 @@
 FROM node:22-alpine AS builder
 
 # Install pnpm
-RUN npm install -g pnpm
+RUN npm install -g yarn
 
 WORKDIR /app
 
 # Copy package.json and pnpm-lock.yaml (if you have one)
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json yarn.lock* ./
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+RUN yarn --frozen-lockfile
 
 # Copy the rest of the code
 COPY . .
 
 # Build the application
-RUN pnpm run build
+RUN yarn build
 
 # Stage 2: Run the application
 FROM node:22-alpine AS runner
 
 # Install pnpm
-RUN npm install -g pnpm
+RUN npm install -g yarn
 
 WORKDIR /app
 
 # Copy package.json and pnpm-lock.yaml (if you have one)
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json yarn.lock* ./
 
 # Install only production dependencies
-RUN pnpm install --prod --frozen-lockfile
+RUN yarn --prod --frozen-lockfile
 
 # Copy built application from builder stage
 COPY --from=builder /app/.next ./.next
@@ -39,4 +39,4 @@ COPY --from=builder /app/public ./public
 EXPOSE 3000
 
 # Run the application
-CMD ["pnpm", "start"]
+CMD ["yarn", "start"]
