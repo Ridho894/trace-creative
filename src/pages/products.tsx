@@ -529,23 +529,23 @@ const Products = () => {
 
   return (
     <div>
-      <div className="relative w-screen h-screen overflow-hidden">
-        <Image
+      <div className="relative w-screen h-max xl:h-screen overflow-hidden">
+        <img
           src="/background_top.png"
           alt="Background Image"
-          fill
-          className="object-cover"
+          className="object-cover h-[550px] xl:h-screen w-screen"
         />
       </div>
       <div className="relative w-full bg-[#FFD205] pb-20">
         <div className="bg-[url('/small_curve.png')] h-full w-screen bg-contain bg-no-repeat">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-h2 text-white pt-5 tracking-wide uppercase text-right">
+            <h2 className="xl:text-h2 text-h5 text-white pt-5 tracking-wide uppercase text-right">
               Products
             </h2>
           </div>
-          <div className="max-w-7xl h-full mx-auto space-x- pt-20 flex items-start justify-between">
-            <div>
+          <div className="max-w-7xl h-full mx-auto space-x- xl:pt-20 pt-10 flex xl:flex-row flex-col items-start justify-between">
+            {/* DESKTOP */}
+            <div className="hidden xl:block">
               {catalogItems.map((item) => (
                 <div key={item.id}>
                   <button
@@ -563,7 +563,26 @@ const Products = () => {
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-5 gap-5 w-max">
+            {/* MOBILE BUAT SCROLL KIRI KANAN */}
+            <div className="flex xl:hidden overflow-x-auto space-x-4 px-4 w-full pb-10">
+              {catalogItems.map((item) => (
+                <div key={item.id} className="flex-shrink-0">
+                  <button
+                    onClick={() => {
+                      handleCategoryClick(item.name);
+                    }}
+                    className={`leading-tight text-[#043D58] p-2 px-10 w-full text-left ${
+                      item.name === selectedCatalog
+                        ? "text-white bg-[#0D6286] rounded-full"
+                        : ""
+                    }`}
+                  >
+                    <h6 className="text-sub2">{item.name}</h6>
+                  </button>
+                </div>
+              ))}
+            </div>
+            <div className="grid xl:grid-cols-5 grid-cols-2 gap-5 place-self-center w-max xl:px-0 px-4">
               {/* Baris pertama - 5 item */}
               {selectedItems.map((item, i) => (
                 <div
