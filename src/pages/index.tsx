@@ -6,6 +6,7 @@ import { TfiEmail } from "react-icons/tfi";
 import Button from "@/components/core/Button";
 import Input from "@/components/core/Input";
 import Textarea from "@/components/core/Textarea";
+import Link from "next/link";
 
 const brands = [
   "/brands/mitshubishi-motors.png",
@@ -152,15 +153,28 @@ export default function Home() {
             <div className="space-y-2 text-[#043D58] font-medium">
               <div className="flex items-center space-x-6">
                 <MdPhoneInTalk className="w-4 h-4" />
-                <p>+62 81297358236</p>
+                <p>
+                  <Link target="_blank" href={"https://wa.me/6281297358236"}>
+                    +62 81297358236
+                  </Link>
+                </p>
               </div>
               <div className="flex items-center space-x-6">
                 <CiInstagram className="w-4 h-4" />
-                <p>@tracecreative</p>
+                <p>
+                  <Link
+                    target="_blank"
+                    href={"https://instagram.com/tracecreative.id"}
+                  >
+                    @tracecreative
+                  </Link>
+                </p>
               </div>
               <div className="flex items-center space-x-6">
                 <TfiEmail className="w-4 h-4" />
-                <p>info@tracecreative.co.id</p>
+                <Link href={"mailto:info@tracecreative.co.id"}>
+                  info@tracecreative
+                </Link>
               </div>
             </div>
             <div>
