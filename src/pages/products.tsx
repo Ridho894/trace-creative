@@ -1,3 +1,4 @@
+import Select from "@/components/core/Select";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -539,11 +540,11 @@ const Products = () => {
       <div className="relative w-full bg-[#FFD205] pb-20">
         <div className="bg-[url('/small_curve.png')] h-full w-screen bg-contain bg-no-repeat">
           <div className="max-w-7xl mx-auto">
-            <h2 className="xl:text-h2 text-h5 text-white pt-5 tracking-wide uppercase text-right">
+            <h2 className="xl:text-h2 text-h5 text-white pt-5 tracking-wide uppercase text-left xl:text-right mx-10 xl:mx-0">
               Products
             </h2>
           </div>
-          <div className="max-w-7xl h-full mx-auto space-x- xl:pt-20 pt-10 flex xl:flex-row flex-col items-start justify-between">
+          <div className="max-w-7xl h-full mx-auto xl:pt-20 pt-5 flex xl:flex-row flex-col items-start justify-between">
             {/* DESKTOP */}
             <div className="hidden xl:block">
               {catalogItems.map((item) => (
@@ -564,23 +565,39 @@ const Products = () => {
               ))}
             </div>
             {/* MOBILE BUAT SCROLL KIRI KANAN */}
-            <div className="flex xl:hidden overflow-x-auto space-x-4 px-4 w-full pb-10">
-              {catalogItems.map((item) => (
-                <div key={item.id} className="flex-shrink-0">
-                  <button
-                    onClick={() => {
-                      handleCategoryClick(item.name);
-                    }}
-                    className={`leading-tight text-[#043D58] p-2 px-10 w-full text-left ${
-                      item.name === selectedCatalog
-                        ? "text-white bg-[#0D6286] rounded-full"
-                        : ""
-                    }`}
-                  >
-                    <h6 className="text-sub2">{item.name}</h6>
-                  </button>
-                </div>
-              ))}
+            <div className="mx-6 px-4 pb-10">
+              <Select
+                className="w-60 xl:w-full bg-[#043D58]"
+                dropdownClassName="h-96 bg- overflow-y-auto"
+                value={selectedCatalog as string}
+                data={catalogItems}
+                onChange={(e) => {
+                  const category = e.name;
+                  if (category === "Clothing") {
+                    setSelectedItems(Clothing);
+                  } else if (category === "Accessories") {
+                    setSelectedItems(Accessories);
+                  } else if (category === "Drinkware") {
+                    setSelectedItems(Drinkware);
+                  } else if (category === "Bags & Wallets") {
+                    setSelectedItems(BagsAndWallets);
+                  } else if (category === "Stationery and Office Supplies") {
+                    setSelectedItems(StationeryAndOfficeSupplies);
+                  } else if (category === "Electronics") {
+                    setSelectedItems(Electronics);
+                  } else if (category === "Safety Apparel") {
+                    setSelectedItems(SafetyApparel);
+                  } else if (category === "Eco-Friendly Items") {
+                    setSelectedItems(EcoFriendlyItems);
+                  } else if (category === "Digital Printing") {
+                    setSelectedItems(DigitalPrinting);
+                  } else if (category === "Premium Items") {
+                    setSelectedItems(PremiumItems);
+                  } else {
+                    setSelectedItems([]); // Default, jika kategori tidak dikenali
+                  }
+                }}
+              />
             </div>
             <div className="grid xl:grid-cols-5 grid-cols-2 gap-5 place-self-center w-max xl:px-0 px-4">
               {/* Baris pertama - 5 item */}
