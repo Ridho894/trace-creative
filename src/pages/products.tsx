@@ -565,7 +565,7 @@ const Products = () => {
               ))}
             </div>
             {/* MOBILE BUAT SCROLL KIRI KANAN */}
-            <div className="mx-6 px-4 pb-10">
+            <div className="mx-6 px-4 pb-10 block xl:hidden">
               <Select
                 className="w-60 xl:w-full bg-[#043D58]"
                 dropdownClassName="h-96 bg- overflow-y-auto"

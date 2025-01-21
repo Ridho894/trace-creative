@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { MdPhoneInTalk } from "react-icons/md";
 import { CiInstagram } from "react-icons/ci";
 import { TfiEmail } from "react-icons/tfi";
@@ -7,6 +6,8 @@ import Button from "@/components/core/Button";
 import Input from "@/components/core/Input";
 import Textarea from "@/components/core/Textarea";
 import Link from "next/link";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const brands = [
   "/brands/mitshubishi-motors.png",
@@ -20,6 +21,44 @@ const brands = [
 ];
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = fetch("/api/sendMail", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }).then((res) => {
+        if (!res.ok) {
+          setFormData({ name: "", email: "", message: "", company: "" });
+          throw new Error("Failed to send message");
+        }
+        return res.json();
+      });
+      toast.success("Email sent successfully!");
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Failed to send message");
+    } finally {
+      setLoading(false);
+      setFormData({ name: "", email: "", message: "", company: "" });
+    }
+  };
+
   return (
     <div className="pb-10">
       <div className="relative w-screen h-max xl:h-screen overflow-hidden">
@@ -186,25 +225,60 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col items-center xl:pl-40 pl-0 space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full flex flex-col items-center xl:pl-40 pl-0 space-y-4"
+        >
           <div className="xl:w-96 w-[350px]">
             <p>Name</p>
-            <Input placeholder="Value" />
+            <Input
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              placeholder="Your Name"
+            />
           </div>
           <div className="xl:w-96 w-[350px]">
-            <p>Surname</p>
-            <Input placeholder="Value" />
+            <p>Company</p>
+            <Input
+              value={formData.company}
+              onChange={(e) =>
+                setFormData({ ...formData, company: e.target.value })
+              }
+              placeholder="Your Company"
+            />
           </div>
           <div className="xl:w-96 w-[350px]">
             <p>Email</p>
-            <Input placeholder="Value" />
+            <Input
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              placeholder="Your Email"
+            />
           </div>
           <div className="xl:w-96 w-[350px]">
             <p>Message</p>
-            <Textarea placeholder="Value" />
+            <Textarea
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              placeholder="Your Message"
+            />
           </div>
-          <Button className="xl:w-96 w-[350px]">Confirm</Button>
-        </div>
+          <Button
+            type="submit"
+            disabled={
+              loading || !formData.name || !formData.email || !formData.message
+            }
+            className="xl:w-96 w-[350px] disabled:cursor-not-allowed"
+          >
+            {loading ? "Sending..." : "Send"}
+          </Button>
+        </form>
       </div>
     </div>
   );
