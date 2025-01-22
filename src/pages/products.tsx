@@ -1,4 +1,4 @@
-import Select from "@/components/core/Select";
+import Select, { SelectItem } from "@/components/core/Select";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -495,33 +495,33 @@ const PremiumItems = [
 ];
 
 const Products = () => {
-  const [selectedCatalog, setSelectedCatalog] = useState<string | null>(
-    "Clothing"
+  const [selectedCatalog, setSelectedCatalog] = useState<SelectItem>(
+    catalogItems[0]
   );
   const [selectedItems, setSelectedItems] = useState<any[]>(Clothing);
 
-  const handleCategoryClick = (category: string) => {
+  const handleCategoryClick = (category: SelectItem) => {
     setSelectedCatalog(category);
-
-    if (category === "Clothing") {
+    const categoryName = category.name;
+    if (categoryName === "Clothing") {
       setSelectedItems(Clothing);
-    } else if (category === "Accessories") {
+    } else if (categoryName === "Accessories") {
       setSelectedItems(Accessories);
-    } else if (category === "Drinkware") {
+    } else if (categoryName === "Drinkware") {
       setSelectedItems(Drinkware);
-    } else if (category === "Bags & Wallets") {
+    } else if (categoryName === "Bags & Wallets") {
       setSelectedItems(BagsAndWallets);
-    } else if (category === "Stationery and Office Supplies") {
+    } else if (categoryName === "Stationery and Office Supplies") {
       setSelectedItems(StationeryAndOfficeSupplies);
-    } else if (category === "Electronics") {
+    } else if (categoryName === "Electronics") {
       setSelectedItems(Electronics);
-    } else if (category === "Safety Apparel") {
+    } else if (categoryName === "Safety Apparel") {
       setSelectedItems(SafetyApparel);
-    } else if (category === "Eco-Friendly Items") {
+    } else if (categoryName === "Eco-Friendly Items") {
       setSelectedItems(EcoFriendlyItems);
-    } else if (category === "Digital Printing") {
+    } else if (categoryName === "Digital Printing") {
       setSelectedItems(DigitalPrinting);
-    } else if (category === "Premium Items") {
+    } else if (categoryName === "Premium Items") {
       setSelectedItems(PremiumItems);
     } else {
       setSelectedItems([]); // Default, jika kategori tidak dikenali
@@ -551,10 +551,10 @@ const Products = () => {
                 <div key={item.id}>
                   <button
                     onClick={() => {
-                      handleCategoryClick(item.name);
+                      handleCategoryClick(item);
                     }}
                     className={`leading-tight text-[#043D58] p-2 pl-10 w-96 text-left ${
-                      item.name === selectedCatalog
+                      item.name === selectedCatalog.name
                         ? "text-white bg-[#0D6286] rounded-full"
                         : ""
                     }`}
@@ -567,9 +567,9 @@ const Products = () => {
             {/* MOBILE BUAT SCROLL KIRI KANAN */}
             <div className="mx-6 px-4 pb-10 block xl:hidden">
               <Select
-                className="w-60 xl:w-full bg-[#043D58]"
-                dropdownClassName="h-96 bg- overflow-y-auto"
-                value={selectedCatalog as string}
+                className="w-[270px] bg-[#043D58]"
+                dropdownClassName="h-96 w-full bg- overflow-y-auto"
+                value={selectedCatalog}
                 data={catalogItems}
                 onChange={(e) => {
                   const category = e.name;

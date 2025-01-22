@@ -49,7 +49,6 @@ const menus = [
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const router = useRouter();
   const firstPath = router.pathname.split("/")[1];
-  console.log(firstPath, "firstPath");
 
   const [sidenavOpen, setSidenavOpen] = useState<boolean>(false);
 

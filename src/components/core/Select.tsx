@@ -48,12 +48,13 @@ const Select: React.FC<SelectProps> = ({
     if (typeof value === "object") {
       setSelected(value);
     } else {
-      const findedData = data.filter((item) => item.id == value);
+      const findedData = data.filter((item) => item.name == value);
       if (findedData?.length) {
         setSelected(findedData.at(0));
       }
     }
   }, [value]);
+
   return (
     <div className="relative">
       <Listbox value={selected} onChange={handleOnChange}>
@@ -73,11 +74,7 @@ const Select: React.FC<SelectProps> = ({
                 className
               )}
             >
-              <p className="text-white">
-                {selected?.name.length! > 25
-                  ? `${selected?.name.substring(0, 25)}...`
-                  : selected?.name}
-              </p>
+              <p className="text-white">{selected?.name}</p>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronIcon
                   color={chevronColor}
