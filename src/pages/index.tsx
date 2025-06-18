@@ -193,8 +193,8 @@ export default function Home() {
               <div className="flex items-center space-x-6">
                 <MdPhoneInTalk className="w-4 h-4" />
                 <p>
-                  <Link target="_blank" href={"https://wa.me/6281297358236"}>
-                    +62 81297358236
+                  <Link target="_blank" href={"https://wa.me/6287730060096"}>
+                    +62 87730060096
                   </Link>
                 </p>
               </div>
