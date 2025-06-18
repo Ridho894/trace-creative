@@ -24,11 +24,11 @@ const menus = [
     name: "Home",
     path: "/",
   },
-  {
-    id: 2,
-    name: "About Us",
-    path: "/about-us",
-  },
+  // {
+  //   id: 2,
+  //   name: "About Us",
+  //   path: "/about-us",
+  // },
   {
     id: 3,
     name: "Products",
@@ -39,11 +39,11 @@ const menus = [
     name: "Clients",
     path: "/clients",
   },
-  {
-    id: 5,
-    name: "Contact Us",
-    path: "/contact-us",
-  },
+  // {
+  //   id: 5,
+  //   name: "Contact Us",
+  //   path: "/contact-us",
+  // },
 ];
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
