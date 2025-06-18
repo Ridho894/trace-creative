@@ -34,11 +34,11 @@ const menus = [
     name: "Products",
     path: "/products",
   },
-  {
-    id: 4,
-    name: "Clients",
-    path: "/clients",
-  },
+  // {
+  //   id: 4,
+  //   name: "Clients",
+  //   path: "/clients",
+  // },
   // {
   //   id: 5,
   //   name: "Contact Us",
